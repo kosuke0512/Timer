@@ -12,6 +12,7 @@
     <font size="7"><B id="counter1">0</B></font><font size="7">:</font><font size="7"><B id="counter2">00</B></font>
     <input type="button" id="b_start" size="10" value="スタート" onclick="count_start()">
     <input type="button" id="b_stop" size="10" value="ストップ" onclick="count_stop()">
+    <input type="button" id="b_reset" size="10" value="リセット" onclick="count_reset();">
 </form>
 <hr size="10" color="#0000ff" noshade>  
 
@@ -65,6 +66,48 @@ function count_stop() {//カウント停止
     clearInterval(timerID );
     document.getElementById("b_stop" ).disabled =true;   // 開始ボタンの無効化
     //timer_reset();
+}
+function count_reset() {//カウントリセット
+    clearInterval(timerID );
+    document.getElementById("b_start" ).disabled =false;   // 開始ボタンの無効化
+    document.getElementById("b_stop" ).disabled =false;   // 開始ボタンの無効化
+
+    document.myform. pass.checked=false;
+    document.myform.OB_PZ.checked=false;
+    document.myform.PZ1_0.checked=false;
+    document.myform.PZ1_1.checked=false;
+    document.myform.PZ1_2.checked=false;
+    document.myform.PZ1_3.checked=false;
+    document.myform.PZ2_0.checked=false;
+    document.myform.PZ2_1.checked=false;
+    document.myform.PZ2_2.checked=false;
+    document.myform.PZ2_3.checked=false;
+    document.myform.PZ3_0.checked=false;
+    document.myform.PZ3_1.checked=false;
+    document.myform.PZ3_2.checked=false;
+    document.myform.PZ3_3.checked=false;
+
+    document.getElementById("counter1").innerHTML = "0";   // 表示更新 
+    document.getElementById("counter2").innerHTML = "00";   // 表示更新 
+
+    document.myform.tokuten_H.value = "";  
+    document.myform.jikan_tokuten.value = "";  
+    document.myform.goukei.value = "";  
+    msg_point_H = "";
+    document.getElementById("point_H").innerHTML= "";
+    document.getElementById("point_jikan").innerHTML= "";
+    msg_point_goukei= "";
+    document.getElementById("point_goukei").innerHTML= "";
+    target.innerHTML = "";
+    document.getElementById("time_passput").innerHTML= "";
+    document.getElementById("time_OB_PZ").innerHTML ="";
+    document.getElementById("PZ1").innerHTML =""
+    document.getElementById("PZ2").innerHTML =""
+    document.getElementById("PZ3").innerHTML =""
+
+    def_count = 0;
+    Status=-1;
+    timer_reset();
 }
 function count_format_min(num) {//カウント表示の書式設定
     var tm,ts;
@@ -201,7 +244,7 @@ function calc_total(){//得点表示
             }
     }
     if(pass == true){
-        time_point= Math.floor((180 - count) / 160 * 9 * 100) / 10;
+        time_point= Math.round((180 - count) / 160 * 9 * 100) / 10;
         Time = count;
     }else{
         time_point = 0;
