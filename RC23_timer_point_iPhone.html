@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html><head><meta name="viewport" content="width=400" >
+<link rel="stylesheet"href="RC23_timer_point_iPhone.css">
+<title>RC23タイマー/得点 iPhone</title>
+</head>
+
+<body>
+<!-- ////////////////////////////////////////////Time form/////////////////////////////////////////////////// -->
+<form name="ktimer" onsubmit="return false;">
+    <font size="6"><B id="counter1">0</B></font><font size="6">:</font><font size="6"><B id="counter2">00</B></font>
+    <input type="button" id="b_start" size="8" value="スタート" onclick="count_start()">
+    <input type="button" id="b_stop" size="8" value="ストップ" onclick="count_stop()">
+    <input type="button" id="b_reset" size="8" value="リセット" onclick="count_reset();">
+    <font size="6" color="red"><B id="red_tensuu">0</B></font><font size="6"> vs </font><font size="6" color="blue"><B id="blue_tensuu">0</B></font>
+</form>
+<hr size="10" color="#0000ff" noshade>  
+
+<!-- ////////////////////////////////////////////Order form/////////////////////////////////////////////////// -->
+<!-- <form name="order" onsubmit="return false;">
+    <font size="5"><p id="comment">指示</p></font>
+</form> -->
+
+<div class="Pole">
+    <img src="Field.jpg" alt="field" title="RC23_field">
+    <div class="Type3">
+        <input type="checkbox" value="v_type3" id="b_type3" name="Type3"><label for="b_type3">70</label>
+    </div>
+    <div class="Type2_1">
+        <input type="checkbox" value="v_type2_1" id="b_type2_1" name="Type2_1"><label for="b_type2_1">30</label>
+    </div>
+    <div class="Type2_2">
+        <input type="checkbox" value="v_type2_2" id="b_type2_2" name="Type2_2"><label for="b_type2_2">30</label>
+    </div>
+    <div class="Type2_3">
+        <input type="checkbox" value="v_type2_3" id="b_type2_3" name="Type2_3"><label for="b_type2_3">30</label>
+    </div>
+    <div class="Type2_4">
+        <input type="checkbox" value="v_type2_4" id="b_type2_4" name="Type2_4"><label for="b_type2_4">30</label>
+    </div>
+    <div class="Type1_1">
+        <input type="checkbox" value="v_type1_1" id="b_type1_1" name="Type1_1"><label for="b_type1_1">10</label>
+    </div>
+    <div class="Type1_2">
+        <input type="checkbox" value="v_type1_2" id="b_type1_2" name="Type1_2"><label for="b_type1_2">10</label>
+    </div>
+    <div class="Type1_3">
+        <input type="checkbox" value="v_type1_3" id="b_type1_3" name="Type1_3"><label for="b_type1_3">10</label>
+    </div>
+    <div class="Type1_4">
+        <input type="checkbox" value="v_type1_4" id="b_type1_4" name="Type1_4"><label for="b_type1_4">25</label>
+    </div>
+    <div class="Type1_5">
+        <input type="checkbox" value="v_type1_5" id="b_type1_5" name="Type1_5"><label for="b_type1_5">25</label>
+    </div>
+    <div class="Type1_6">
+        <input type="checkbox" value="v_type1_6" id="b_type1_6" name="Type1_6"><label for="b_type1_6">25</label>
+    </div>
+</div>
+
+<!-- ////////////////////////////////////////////Script Time/////////////////////////////////////////////////// -->
+<script type="text/javascript">//初期設定
+def_count = 0;
+var Status=-1;   // 状態確認
+timer_reset();
+
+
+function timer_reset() {
+    //タイマーの初期化
+    timerID = 0;
+    commentID=0;
+    document.ktimer.counter.value = def_count;
+    document.ktimer.b_start.disabled = false;
+}
+function set_timer(num) {//規定時間の設定
+    if (timerID > 0) {
+        count_stop();
+    }
+    document.ktimer.counter.value = num;
+    count_start();
+}
+function count_start() {//カウント開始
+    //カウント開始
+    count =def_count;   // カウンタのリセット
+    timerID  = setInterval('countdown()',1000);   // タイマーをセット(1000ms間隔)
+    document.getElementById("b_start" ).disabled = true;   // 開始ボタンの無効化
+    calcID = setInterval('calc_total()',1000);
+    s_status = setInterval('onButtonClick()',100);
+}
+function count_stop() {//カウント停止
+    clearInterval(timerID );
+    document.getElementById("b_stop" ).disabled =true;   // 開始ボタンの無効化
+    //timer_reset();
+}
+function count_reset() {//カウントリセット
+    clearInterval(timerID );
+    document.getElementById("b_start" ).disabled =false;   // 開始ボタンの無効化
+    document.getElementById("b_stop" ).disabled =false;   // 開始ボタンの無効化
+
+    document.getElementById("b_type3").checked=true;
+    document.getElementById("b_type2_1").checked=false;
+    document.getElementById("b_type2_2").checked=false;
+    document.getElementById("b_type2_3").checked=false;
+    document.getElementById("b_type2_4").checked=false;
+    document.getElementById("b_type1_1").checked=false;
+    document.getElementById("b_type1_2").checked=false;
+    document.getElementById("b_type1_3").checked=false;
+    document.getElementById("b_type1_4").checked=false;
+    document.getElementById("b_type1_5").checked=false;
+    document.getElementById("b_type1_6").checked=false;
+
+    document.getElementById("counter1").innerHTML = "0";   // 表示更新 
+    document.getElementById("counter2").innerHTML = "00";   // 表示更新 
+    document.getElementById("red_tensuu").innerHTML = "0";   // 表示更新 
+    document.getElementById("blue_tensuu").innerHTML = "0";   // 表示更新 
+
+    def_count = 0;
+    Status=-1;
+    timer_reset();
+}
+function count_format_min(num) {//カウント表示の書式設定
+    var tm,ts;
+    ts = Math.floor(num / 60) ; 
+    return ts;
+}
+function count_format_sec(num) {//カウント表示の書式設定
+    var tm,ts;
+    ts = ( '00' + num % 60 ).slice( -2 ); 
+    return ts;
+}
+function countdown() {//カウント表示
+    count++;
+   document.getElementById("counter1").innerHTML = count_format_min(count);   // 表示更新 
+   document.getElementById("counter2").innerHTML = count_format_sec(count);   // 表示更新 
+    if (count == 180) {
+    count_stop();
+    }
+}
+</script>
+
+
+<!-- ////////////////////////////////////////////Script point/////////////////////////////////////////////////// -->
+<script type="text/javascript">//初期設定
+function onButtonClick() {//状態表示
+    type3   =   document.getElementById("b_type3").checked;
+    type2_1   =   document.getElementById("b_type2_1").checked;
+    type2_2   =   document.getElementById("b_type2_2").checked;
+    type2_3   =   document.getElementById("b_type2_3").checked;
+    type2_4   =   document.getElementById("b_type2_4").checked;
+    type1_1   =   document.getElementById("b_type1_1").checked;
+    type1_2  =   document.getElementById("b_type1_2").checked;
+    type1_3  =   document.getElementById("b_type1_3").checked;
+    type1_4  =   document.getElementById("b_type1_4").checked;
+    type1_5  =   document.getElementById("b_type1_5").checked;
+    type1_6  =   document.getElementById("b_type1_6").checked;
+
+    red_kingaku = 0;
+    blue_kingaku = 0;
+    Time = 0;
+
+    if (type3 == true) {
+        red_kingaku += 70;
+    }
+    if (type2_1 == true) {
+        red_kingaku += 30;
+    }
+    if (type2_2 == true) {
+        red_kingaku += 30;
+    }
+    if (type2_3 == true) {
+        red_kingaku += 30;
+    }
+    if (type2_4 == true) {
+        red_kingaku += 30;
+    }
+    if (type1_1 == true) {
+        red_kingaku += 10;
+    }
+    if (type1_2 == true) {
+        red_kingaku += 10;
+    }
+    if (type1_3 == true) {
+        red_kingaku += 10;
+    }
+    if (type1_4 == true) {
+        red_kingaku += 25;
+    }
+    if (type1_5 == true) {
+        red_kingaku += 25;
+    }
+    if (type1_6 == true) {
+        red_kingaku += 25;
+    }
+
+    document.getElementById("red_tensuu").innerHTML= red_kingaku;
+    document.getElementById("blue_tensuu").innerHTML= blue_kingaku;
+  }
+</script>
+
+<div id="red_tensuu" >     </div>
+<div id="blue_tensuu" >     </div>
+
+<input type="button" id="iPhone" size="10" value="iPhone" onclick="location.href='https://kosuke0512.github.io/Timer/RC23_timer_point_PC.html'">
+
+</body></html>
