@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html><head><meta name="viewport" content="width400" >
+<link rel="stylesheet"href="RC23_timer_point_PC.css">
+<title>RC23タイマー/得点 PC</title>
+</head>
+
+<body>
+<!-- ////////////////////////////////////////////Time form/////////////////////////////////////////////////// -->
+<form name="ktimer" onsubmit="return false;">
+    <!-- <font size="7"><B id="counter">180</B></font><font size="5">sec</font> -->
+    <font size="7"><B id="counter1">0</B></font><font size="7">:</font><font size="7"><B id="counter2">00</B></font>
+    <input type="button" id="b_start" size="10" value="スタート" onclick="count_start()">
+    <input type="button" id="b_stop" size="10" value="ストップ" onclick="count_stop()">
+    <input type="button" id="b_reset" size="10" value="リセット" onclick="count_reset();">
+    <font size="7" color="red"><B id="red_tensuu">0</B></font><font size="7"> vs </font><font size="7" color="blue"><B id="blue_tensuu">0</B></font>
+</form>
+<hr size="10" color="#0000ff" noshade>  
+
+<!-- ////////////////////////////////////////////Order form/////////////////////////////////////////////////// -->
+<!-- <form name="order" onsubmit="return false;">
+    <font size="5"><p id="comment">指示</p></font>
+</form> -->
+
+<div class="Pole">
+    <img src="Field.jpg" alt="fieldr" title="RC23_fieldr">
+    <div class="Type3r">
+        <input type="checkbox" value="v_type3r" id="b_type3r" name="Type3r"><label for="b_type3r">70</label>
+    </div>
+    <div class="Type2_1r">
+        <input type="checkbox" value="v_type2_1r" id="b_type2_1r" name="Type2_1r"><label for="b_type2_1r">30</label>
+    </div>
+    <div class="Type2_2r">
+        <input type="checkbox" value="v_type2_2r" id="b_type2_2r" name="Type2_2r"><label for="b_type2_2r">30</label>
+    </div>
+    <div class="Type2_3r">
+        <input type="checkbox" value="v_type2_3r" id="b_type2_3r" name="Type2_3r"><label for="b_type2_3r">30</label>
+    </div>
+    <div class="Type2_4r">
+        <input type="checkbox" value="v_type2_4r" id="b_type2_4r" name="Type2_4r"><label for="b_type2_4r">30</label>
+    </div>
+    <div class="Type1_1r">
+        <input type="checkbox" value="v_type1_1r" id="b_type1_1r" name="Type1_1r"><label for="b_type1_1r">10</label>
+    </div>
+    <div class="Type1_2r">
+        <input type="checkbox" value="v_type1_2r" id="b_type1_2r" name="Type1_2r"><label for="b_type1_2r">10</label>
+    </div>
+    <div class="Type1_3r">
+        <input type="checkbox" value="v_type1_3r" id="b_type1_3r" name="Type1_3r"><label for="b_type1_3r">10</label>
+    </div>
+    <div class="Type1_4r">
+        <input type="checkbox" value="v_type1_4r" id="b_type1_4r" name="Type1_4r"><label for="b_type1_4r">25</label>
+    </div>
+    <div class="Type1_5r">
+        <input type="checkbox" value="v_type1_5r" id="b_type1_5r" name="Type1_5r"><label for="b_type1_5r">25</label>
+    </div>
+    <div class="Type1_6r">
+        <input type="checkbox" value="v_type1_6r" id="b_type1_6r" name="Type1_6r"><label for="b_type1_6r">25</label>
+    </div>
+    　　
+    　　
+    <img src="Field.jpg" alt="fieldb" title="RC23_fieldb">
+    <div class="Type3b">
+        <input type="checkbox" value="v_type3b" id="b_type3b" name="Type3b"><label for="b_type3b">70</label>
+    </div>
+    <div class="Type2_1b">
+        <input type="checkbox" value="v_type2_1b" id="b_type2_1b" name="Type2_1b"><label for="b_type2_1b">30</label>
+    </div>
+    <div class="Type2_2b">
+        <input type="checkbox" value="v_type2_2b" id="b_type2_2b" name="Type2_2b"><label for="b_type2_2b">30</label>
+    </div>
+    <div class="Type2_3b">
+        <input type="checkbox" value="v_type2_3b" id="b_type2_3b" name="Type2_3b"><label for="b_type2_3b">30</label>
+    </div>
+    <div class="Type2_4b">
+        <input type="checkbox" value="v_type2_4b" id="b_type2_4b" name="Type2_4b"><label for="b_type2_4b">30</label>
+    </div>
+    <div class="Type1_1b">
+        <input type="checkbox" value="v_type1_1b" id="b_type1_1b" name="Type1_1b"><label for="b_type1_1b">25</label>
+    </div>
+    <div class="Type1_2b">
+        <input type="checkbox" value="v_type1_2b" id="b_type1_2b" name="Type1_2b"><label for="b_type1_2b">25</label>
+    </div>
+    <div class="Type1_3b">
+        <input type="checkbox" value="v_type1_3b" id="b_type1_3b" name="Type1_3b"><label for="b_type1_3b">25</label>
+    </div>
+    <div class="Type1_4b">
+        <input type="checkbox" value="v_type1_4b" id="b_type1_4b" name="Type1_4b"><label for="b_type1_4b">10</label>
+    </div>
+    <div class="Type1_5b">
+        <input type="checkbox" value="v_type1_5b" id="b_type1_5b" name="Type1_5b"><label for="b_type1_5b">10</label>
+    </div>
+    <div class="Type1_6b">
+        <input type="checkbox" value="v_type1_6b" id="b_type1_6b" name="Type1_6b"><label for="b_type1_6b">10</label>
+    </div>
+</div>
+
+<!-- ////////////////////////////////////////////Script Time/////////////////////////////////////////////////// -->
+<script type="text/javascript">//初期設定
+def_count = 0;
+var Status=-1;   // 状態確認
+Status_3r = 0;
+Status_3r0 = 0;
+Status_3b = 0;
+Status_3b0 = 0;
+
+Status_21r = 0;
+Status_21r0 = 0;
+Status_21b = 0;
+Status_21b0 = 0;
+Status_22r = 0;
+Status_22r0 = 0;
+Status_22b = 0;
+Status_22b0 = 0;
+Status_23r = 0;
+Status_23r0 = 0;
+Status_23b = 0;
+Status_23b0 = 0;
+Status_24r = 0;
+Status_24r0 = 0;
+Status_24b = 0;
+Status_24b0 = 0;
+
+Status_11r = 0;
+Status_11r0 = 0;
+Status_11b = 0;
+Status_11b0 = 0;
+Status_12r = 0;
+Status_12r0 = 0;
+Status_12b = 0;
+Status_12b0 = 0;
+Status_13r = 0;
+Status_13r0 = 0;
+Status_13b = 0;
+Status_13b0 = 0;
+Status_14r = 0;
+Status_14r0 = 0;
+Status_14b = 0;
+Status_14b0 = 0;
+Status_15r = 0;
+Status_15r0 = 0;
+Status_15b = 0;
+Status_15b0 = 0;
+Status_16r = 0;
+Status_16r0 = 0;
+Status_16b = 0;
+Status_16b0 = 0;
+
+Status_game = 0;
+
+timer_reset();
+
+
+function timer_reset() {
+    //タイマーの初期化
+    timerID = 0;
+    commentID=0;
+    document.ktimer.counter.value = def_count;
+    document.ktimer.b_start.disabled = false;
+}
+function set_timer(num) {//規定時間の設定
+    if (timerID > 0) {
+        count_stop();
+    }
+    document.ktimer.counter.value = num;
+    count_start();
+}
+function count_start() {//カウント開始
+    //カウント開始
+    count =def_count;   // カウンタのリセット
+    timerID  = setInterval('countdown()',1000);   // タイマーをセット(1000ms間隔)
+    document.getElementById("b_start" ).disabled = true;   // 開始ボタンの無効化
+    calcID = setInterval('calc_total()',1000);
+    s_status = setInterval('onButtonClick()',100);
+}
+function count_stop() {//カウント停止
+    clearInterval(timerID );
+    document.getElementById("b_stop" ).disabled =true;   // 開始ボタンの無効化
+    //timer_reset();
+}
+function count_reset() {//カウントリセット
+    clearInterval(timerID );
+    document.getElementById("b_start" ).disabled =false;   // 開始ボタンの無効化
+    document.getElementById("b_stop" ).disabled =false;   // 開始ボタンの無効化
+
+    document.getElementById("b_type3r").checked=false;
+    document.getElementById("b_type2_1r").checked=false;
+    document.getElementById("b_type2_2r").checked=false;
+    document.getElementById("b_type2_3r").checked=false;
+    document.getElementById("b_type2_4r").checked=false;
+    document.getElementById("b_type1_1r").checked=false;
+    document.getElementById("b_type1_2r").checked=false;
+    document.getElementById("b_type1_3r").checked=false;
+    document.getElementById("b_type1_4r").checked=false;
+    document.getElementById("b_type1_5r").checked=false;
+    document.getElementById("b_type1_6r").checked=false;
+
+    document.getElementById("b_type3b").checked=false;
+    document.getElementById("b_type2_1b").checked=false;
+    document.getElementById("b_type2_2b").checked=false;
+    document.getElementById("b_type2_3b").checked=false;
+    document.getElementById("b_type2_4b").checked=false;
+    document.getElementById("b_type1_1b").checked=false;
+    document.getElementById("b_type1_2b").checked=false;
+    document.getElementById("b_type1_3b").checked=false;
+    document.getElementById("b_type1_4b").checked=false;
+    document.getElementById("b_type1_5b").checked=false;
+    document.getElementById("b_type1_6b").checked=false;
+
+    document.getElementById("counter1").innerHTML = "0";   // 表示更新 
+    document.getElementById("counter2").innerHTML = "00";   // 表示更新 
+    document.getElementById("red_tensuu").innerHTML = "0";   // 表示更新 
+    document.getElementById("blue_tensuu").innerHTML = "0";   // 表示更新 
+
+    def_count = 0;
+    Status=-1;
+    timer_reset();
+}
+function count_format_min(num) {//カウント表示の書式設定
+    var tm,ts;
+    ts = Math.floor(num / 60) ; 
+    return ts;
+}
+function count_format_sec(num) {//カウント表示の書式設定
+    var tm,ts;
+    ts = ( '00' + num % 60 ).slice( -2 ); 
+    return ts;
+}
+function countdown() {//カウント表示
+    count++;
+   document.getElementById("counter1").innerHTML = count_format_min(count);   // 表示更新 
+   document.getElementById("counter2").innerHTML = count_format_sec(count);   // 表示更新 
+    if (count == 180) {
+    count_stop();
+    }
+}
+</script>
+
+
+<!-- ////////////////////////////////////////////Script point/////////////////////////////////////////////////// -->
+<script type="text/javascript">//初期設定
+function onButtonClick() {//状態表示
+    type3r    =   document.getElementById("b_type3r").checked;
+    type2_1r  =   document.getElementById("b_type2_1r").checked;
+    type2_2r  =   document.getElementById("b_type2_2r").checked;
+    type2_3r  =   document.getElementById("b_type2_3r").checked;
+    type2_4r  =   document.getElementById("b_type2_4r").checked;
+    type1_1r  =   document.getElementById("b_type1_1r").checked;
+    type1_2r  =   document.getElementById("b_type1_2r").checked;
+    type1_3r  =   document.getElementById("b_type1_3r").checked;
+    type1_4r  =   document.getElementById("b_type1_4r").checked;
+    type1_5r  =   document.getElementById("b_type1_5r").checked;
+    type1_6r  =   document.getElementById("b_type1_6r").checked;
+
+    type3b    =   document.getElementById("b_type3b").checked;
+    type2_1b  =   document.getElementById("b_type2_1b").checked;
+    type2_2b  =   document.getElementById("b_type2_2b").checked;
+    type2_3b  =   document.getElementById("b_type2_3b").checked;
+    type2_4b  =   document.getElementById("b_type2_4b").checked;
+    type1_1b  =   document.getElementById("b_type1_1b").checked;
+    type1_2b  =   document.getElementById("b_type1_2b").checked;
+    type1_3b  =   document.getElementById("b_type1_3b").checked;
+    type1_4b  =   document.getElementById("b_type1_4b").checked;
+    type1_5b  =   document.getElementById("b_type1_5b").checked;
+    type1_6b  =   document.getElementById("b_type1_6b").checked;
+
+    red_kingaku = 0;
+    blue_kingaku = 0;
+    Time = 0;
+
+    if (Status_game == 0){
+        if (Status_3r0 == 0 && Status_3b0 == 0){
+            if (type3r == true) {
+                red_kingaku += 70;
+                Status_3r = 1;
+                document.getElementById("b_type3b").indeterminate = true;
+            }
+            if (type3b == true) {
+                blue_kingaku += 70;
+                Status_3b = 1;
+                document.getElementById("b_type3r").indeterminate = true;
+            }
+        }
+        else if (Status_3r0 == 1 && Status_3b0 == 0){
+            if (type3r == false){
+                document.getElementById("b_type3r").checked=true;
+            }
+            if (type3b == true) {
+                blue_kingaku += 70;
+                Status_3b = 1;
+                document.getElementById("b_type3r").checked=false;
+                document.getElementById("b_type3r").indeterminate = true;
+                Status_3r = 0;
+            }
+            else{
+                red_kingaku += 70;
+            }
+        }
+        else if (Status_3r0 == 0 && Status_3b0 == 1){
+            if (type3b == false){
+                document.getElementById("b_type3b").checked=true;
+            }
+            if (type3r == true) {
+                red_kingaku += 70;
+                Status_3r = 1;
+                document.getElementById("b_type3b").checked=false;
+                document.getElementById("b_type3b").indeterminate = true;
+                Status_3b = 0;
+            }
+            else{
+                blue_kingaku += 70;
+            }
+        }
+        Status_3r0 = Status_3r;
+        Status_3b0 = Status_3b;
+
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        if (Status_21r0 == 0 && Status_21b0 == 0){
+            if (type2_1r == true) {
+                red_kingaku += 30;
+                Status_21r = 1;
+                document.getElementById("b_type2_1b").indeterminate = true;
+            }
+            if (type2_1b == true) {
+                blue_kingaku += 30;
+                Status_21b = 1;
+                document.getElementById("b_type2_1r").indeterminate = true;
+            }
+        }
+        else if (Status_21r0 == 1 && Status_21b0 == 0){
+            if (type2_1r == false){
+                document.getElementById("b_type2_1r").checked=true;
+            }
+            if (type2_1b == true) {
+                blue_kingaku += 30;
+                Status_21b = 1;
+                document.getElementById("b_type2_1r").checked=false;
+                document.getElementById("b_type2_1r").indeterminate = true;
+                Status_21r = 0;
+            }
+            else{
+                red_kingaku += 30;
+            }
+        }
+        else if (Status_21r0 == 0 && Status_21b0 == 1){
+            if (type2_1b == false){
+                document.getElementById("b_type2_1b").checked=true;
+            }
+            if (type2_1r == true) {
+                red_kingaku += 30;
+                Status_21r = 1;
+                document.getElementById("b_type2_1b").checked=false;
+                document.getElementById("b_type2_1b").indeterminate = true;
+                Status_21b = 0;
+            }
+            else{
+                blue_kingaku += 30;
+            }
+        }
+        Status_21r0 = Status_21r;
+        Status_21b0 = Status_21b;
+
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        if (Status_22r0 == 0 && Status_22b0 == 0){
+            if (type2_2r == true) {
+                red_kingaku += 30;
+                Status_22r = 1;
+                document.getElementById("b_type2_2b").indeterminate = true;
+            }
+            if (type2_2b == true) {
+                blue_kingaku += 30;
+                Status_22b = 1;
+                document.getElementById("b_type2_2r").indeterminate = true;
+            }
+        }
+        else if (Status_22r0 == 1 && Status_22b0 == 0){
+            if (type2_2r == false){
+                document.getElementById("b_type2_2r").checked=true;
+            }
+            if (type2_2b == true) {
+                blue_kingaku += 30;
+                Status_22b = 1;
+                document.getElementById("b_type2_2r").checked=false;
+                document.getElementById("b_type2_2r").indeterminate = true;
+                Status_22r = 0;
+            }
+            else{
+                red_kingaku += 30;
+            }
+        }
+        else if (Status_22r0 == 0 && Status_22b0 == 1){
+            if (type2_2b == false){
+                document.getElementById("b_type2_2b").checked=true;
+            }
+            if (type2_2r == true) {
+                red_kingaku += 30;
+                Status_22r = 1;
+                document.getElementById("b_type2_2b").checked=false;
+                document.getElementById("b_type2_2b").indeterminate = true;
+                Status_22b = 0;
+            }
+            else{
+                blue_kingaku += 30;
+            }
+        }
+        Status_22r0 = Status_22r;
+        Status_22b0 = Status_22b;
+
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        if (Status_23r0 == 0 && Status_23b0 == 0){
+            if (type2_3r == true) {
+                red_kingaku += 30;
+                Status_23r = 1;
+                document.getElementById("b_type2_3b").indeterminate = true;
+            }
+            if (type2_3b == true) {
+                blue_kingaku += 30;
+                Status_23b = 1;
+                document.getElementById("b_type2_3r").indeterminate = true;
+            }
+        }
+        else if (Status_23r0 == 1 && Status_23b0 == 0){
+            if (type2_3r == false){
+                document.getElementById("b_type2_3r").checked=true;
+            }
+            if (type2_3b == true) {
+                blue_kingaku += 30;
+                Status_23b = 1;
+                document.getElementById("b_type2_3r").checked=false;
+                document.getElementById("b_type2_3r").indeterminate = true;
+                Status_23r = 0;
+            }
+            else{
+                red_kingaku += 30;
+            }
+        }
+        else if (Status_23r0 == 0 && Status_23b0 == 1){
+            if (type2_3b == false){
+                document.getElementById("b_type2_3b").checked=true;
+            }
+            if (type2_3r == true) {
+                red_kingaku += 30;
+                Status_23r = 1;
+                document.getElementById("b_type2_3b").checked=false;
+                document.getElementById("b_type2_3b").indeterminate = true;
+                Status_23b = 0;
+            }
+            else{
+                blue_kingaku += 30;
+            }
+        }
+        Status_23r0 = Status_23r;
+        Status_23b0 = Status_23b;
+
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        if (Status_24r0 == 0 && Status_24b0 == 0){
+            if (type2_4r == true) {
+                red_kingaku += 30;
+                Status_24r = 1;
+                document.getElementById("b_type2_4b").indeterminate = true;
+            }
+            if (type2_4b == true) {
+                blue_kingaku += 30;
+                Status_24b = 1;
+                document.getElementById("b_type2_4r").indeterminate = true;
+            }
+        }
+        else if (Status_24r0 == 1 && Status_24b0 == 0){
+            if (type2_4r == false){
+                document.getElementById("b_type2_4r").checked=true;
+            }
+            if (type2_4b == true) {
+                blue_kingaku += 30;
+                Status_24b = 1;
+                document.getElementById("b_type2_4r").checked=false;
+                document.getElementById("b_type2_4r").indeterminate = true;
+                Status_24r = 0;
+            }
+            else{
+                red_kingaku += 30;
+            }
+        }
+        else if (Status_24r0 == 0 && Status_24b0 == 1){
+            if (type2_4b == false){
+                document.getElementById("b_type2_4b").checked=true;
+            }
+            if (type2_4r == true) {
+                red_kingaku += 30;
+                Status_24r = 1;
+                document.getElementById("b_type2_4b").checked=false;
+                document.getElementById("b_type2_4b").indeterminate = true;
+                Status_24b = 0;
+            }
+            else{
+                blue_kingaku += 30;
+            }
+        }
+        Status_24r0 = Status_24r;
+        Status_24b0 = Status_24b;
+
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        if (Status_11r0 == 0 && Status_11b0 == 0){
+            if (type1_1r == true) {
+                red_kingaku += 10;
+                Status_11r = 1;
+                document.getElementById("b_type1_1b").indeterminate = true;
+            }
+            if (type1_1b == true) {
+                blue_kingaku += 25;
+                Status_11b = 1;
+                document.getElementById("b_type1_1r").indeterminate = true;
+            }
+        }
+        else if (Status_11r0 == 1 && Status_11b0 == 0){
+            if (type1_1r == false){
+                document.getElementById("b_type1_1r").checked=true;
+            }
+            if (type1_1b == true) {
+                blue_kingaku += 25;
+                Status_11b = 1;
+                document.getElementById("b_type1_1r").checked=false;
+                document.getElementById("b_type1_1r").indeterminate = true;
+                Status_11r = 0;
+            }
+            else{
+                red_kingaku += 10;
+            }
+        }
+        else if (Status_11r0 == 0 && Status_11b0 == 1){
+            if (type1_1b == false){
+                document.getElementById("b_type1_1b").checked=true;
+            }
+            if (type1_1r == true) {
+                red_kingaku += 10;
+                Status_11r = 1;
+                document.getElementById("b_type1_1b").checked=false;
+                document.getElementById("b_type1_1b").indeterminate = true;
+                Status_11b = 0;
+            }
+            else{
+                blue_kingaku += 25;
+            }
+        }
+        Status_11r0 = Status_11r;
+        Status_11b0 = Status_11b;
+
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        if (Status_12r0 == 0 && Status_12b0 == 0){
+            if (type1_2r == true) {
+                red_kingaku += 10;
+                Status_12r = 1;
+                document.getElementById("b_type1_2b").indeterminate = true;
+            }
+            if (type1_2b == true) {
+                blue_kingaku += 25;
+                Status_12b = 1;
+                document.getElementById("b_type1_2r").indeterminate = true;
+            }
+        }
+        else if (Status_12r0 == 1 && Status_12b0 == 0){
+            if (type1_2r == false){
+                document.getElementById("b_type1_2r").checked=true;
+            }
+            if (type1_2b == true) {
+                blue_kingaku += 25;
+                Status_12b = 1;
+                document.getElementById("b_type1_2r").checked=false;
+                document.getElementById("b_type1_2r").indeterminate = true;
+                Status_12r = 0;
+            }
+            else{
+                red_kingaku += 10;
+            }
+        }
+        else if (Status_12r0 == 0 && Status_12b0 == 1){
+            if (type1_2b == false){
+                document.getElementById("b_type1_2b").checked=true;
+            }
+            if (type1_2r == true) {
+                red_kingaku += 10;
+                Status_12r = 1;
+                document.getElementById("b_type1_2b").checked=false;
+                document.getElementById("b_type1_2b").indeterminate = true;
+                Status_12b = 0;
+            }
+            else{
+                blue_kingaku += 25;
+            }
+        }
+        Status_12r0 = Status_12r;
+        Status_12b0 = Status_12b;
+
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        if (Status_13r0 == 0 && Status_13b0 == 0){
+            if (type1_3r == true) {
+                red_kingaku += 10;
+                Status_13r = 1;
+                document.getElementById("b_type1_3b").indeterminate = true;
+            }
+            if (type1_3b == true) {
+                blue_kingaku += 25;
+                Status_13b = 1;
+                document.getElementById("b_type1_3r").indeterminate = true;
+            }
+        }
+        else if (Status_13r0 == 1 && Status_13b0 == 0){
+            if (type1_3r == false){
+                document.getElementById("b_type1_3r").checked=true;
+            }
+            if (type1_3b == true) {
+                blue_kingaku += 25;
+                Status_13b = 1;
+                document.getElementById("b_type1_3r").checked=false;
+                document.getElementById("b_type1_3r").indeterminate = true;
+                Status_13r = 0;
+            }
+            else{
+                red_kingaku += 10;
+            }
+        }
+        else if (Status_13r0 == 0 && Status_13b0 == 1){
+            if (type1_3b == false){
+                document.getElementById("b_type1_3b").checked=true;
+            }
+            if (type1_3r == true) {
+                red_kingaku += 10;
+                Status_13r = 1;
+                document.getElementById("b_type1_3b").checked=false;
+                document.getElementById("b_type1_3b").indeterminate = true;
+                Status_13b = 0;
+            }
+            else{
+                blue_kingaku += 25;
+            }
+        }
+        Status_13r0 = Status_13r;
+        Status_13b0 = Status_13b;
+
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        if (Status_14r0 == 0 && Status_14b0 == 0){
+            if (type1_4r == true) {
+                red_kingaku += 25;
+                Status_14r = 1;
+                document.getElementById("b_type1_4b").indeterminate = true;
+            }
+            if (type1_4b == true) {
+                blue_kingaku += 10;
+                Status_14b = 1;
+                document.getElementById("b_type1_4r").indeterminate = true;
+            }
+        }
+        else if (Status_14r0 == 1 && Status_14b0 == 0){
+            if (type1_4r == false){
+                document.getElementById("b_type1_4r").checked=true;
+            }
+            if (type1_4b == true) {
+                blue_kingaku += 10;
+                Status_14b = 1;
+                document.getElementById("b_type1_4r").checked=false;
+                document.getElementById("b_type1_4r").indeterminate = true;
+                Status_14r = 0;
+            }
+            else{
+                red_kingaku += 25;
+            }
+        }
+        else if (Status_14r0 == 0 && Status_14b0 == 1){
+            if (type1_4b == false){
+                document.getElementById("b_type1_4b").checked=true;
+            }
+            if (type1_4r == true) {
+                red_kingaku += 25;
+                Status_14r = 1;
+                document.getElementById("b_type1_4b").checked=false;
+                document.getElementById("b_type1_4b").indeterminate = true;
+                Status_14b = 0;
+            }
+            else{
+                blue_kingaku += 10;
+            }
+        }
+        Status_14r0 = Status_14r;
+        Status_14b0 = Status_14b;
+
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        if (Status_15r0 == 0 && Status_15b0 == 0){
+            if (type1_5r == true) {
+                red_kingaku += 25;
+                Status_15r = 1;
+                document.getElementById("b_type1_5b").indeterminate = true;
+            }
+            if (type1_5b == true) {
+                blue_kingaku += 10;
+                Status_15b = 1;
+                document.getElementById("b_type1_5r").indeterminate = true;
+            }
+        }
+        else if (Status_15r0 == 1 && Status_15b0 == 0){
+            if (type1_5r == false){
+                document.getElementById("b_type1_5r").checked=true;
+            }
+            if (type1_5b == true) {
+                blue_kingaku += 10;
+                Status_15b = 1;
+                document.getElementById("b_type1_5r").checked=false;
+                document.getElementById("b_type1_5r").indeterminate = true;
+                Status_15r = 0;
+            }
+            else{
+                red_kingaku += 25;
+            }
+        }
+        else if (Status_15r0 == 0 && Status_15b0 == 1){
+            if (type1_5b == false){
+                document.getElementById("b_type1_5b").checked=true;
+            }
+            if (type1_5r == true) {
+                red_kingaku += 25;
+                Status_15r = 1;
+                document.getElementById("b_type1_5b").checked=false;
+                document.getElementById("b_type1_5b").indeterminate = true;
+                Status_15b = 0;
+            }
+            else{
+                blue_kingaku += 10;
+            }
+        }
+        Status_15r0 = Status_15r;
+        Status_15b0 = Status_15b;
+
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        if (Status_16r0 == 0 && Status_16b0 == 0){
+            if (type1_6r == true) {
+                red_kingaku += 25;
+                Status_16r = 1;
+                document.getElementById("b_type1_6b").indeterminate = true;
+            }
+            if (type1_6b == true) {
+                blue_kingaku += 10;
+                Status_16b = 1;
+                document.getElementById("b_type1_6r").indeterminate = true;
+            }
+        }
+        else if (Status_16r0 == 1 && Status_16b0 == 0){
+            if (type1_6r == false){
+                document.getElementById("b_type1_6r").checked=true;
+            }
+            if (type1_6b == true) {
+                blue_kingaku += 10;
+                Status_16b = 1;
+                document.getElementById("b_type1_6r").checked=false;
+                document.getElementById("b_type1_6r").indeterminate = true;
+                Status_16r = 0;
+            }
+            else{
+                red_kingaku += 25;
+            }
+        }
+        else if (Status_16r0 == 0 && Status_16b0 == 1){
+            if (type1_6b == false){
+                document.getElementById("b_type1_6b").checked=true;
+            }
+            if (type1_6r == true) {
+                red_kingaku += 25;
+                Status_16r = 1;
+                document.getElementById("b_type1_6b").checked=false;
+                document.getElementById("b_type1_6b").indeterminate = true;
+                Status_16b = 0;
+            }
+            else{
+                blue_kingaku += 10;
+            }
+        }
+        Status_16r0 = Status_16r;
+        Status_16b0 = Status_16b;
+
+        if(Status_3r == 1 && Status_21r == 1 && Status_22r == 1 && Status_23r == 1 && Status_24r == 1 && Status_11r == 1 && Status_12r == 1 && Status_13r == 1){
+            document.getElementById("red_tensuu").innerHTML = "Cheiyo";
+            count_stop()
+            Status_game = 1;
+
+            type1_4r0 = document.getElementById("b_type1_4r").checked;
+            type1_4b0 = document.getElementById("b_type1_4b").checked;
+            type1_5r0 = document.getElementById("b_type1_5r").checked;
+            type1_5b0 = document.getElementById("b_type1_5b").checked;
+            type1_6r0 = document.getElementById("b_type1_6r").checked;
+            type1_6b0 = document.getElementById("b_type1_6b").checked;
+        }
+        else{
+            document.getElementById("red_tensuu").innerHTML = red_kingaku;
+        }
+
+        if(Status_3b == 1 && Status_21b == 1 && Status_22b == 1 && Status_23b == 1 && Status_24b == 1 && Status_14b == 1 && Status_15b == 1 && Status_16b == 1){
+            document.getElementById("blue_tensuu").innerHTML = "Cheiyo";
+            count_stop()
+            Status_game = 2;
+            type1_1r0 = document.getElementById("b_type1_1r").checked;
+            type1_1b0 = document.getElementById("b_type1_1b").checked;
+            type1_2r0 = document.getElementById("b_type1_2r").checked;
+            type1_2b0 = document.getElementById("b_type1_2b").checked;
+            type1_3r0 = document.getElementById("b_type1_3r").checked;
+            type1_3b0 = document.getElementById("b_type1_3b").checked;
+        }
+        else{
+            document.getElementById("blue_tensuu").innerHTML = blue_kingaku;
+        }
+    }
+    else if(Status_game == 1){
+        document.getElementById("b_type3r").checked=true;
+        document.getElementById("b_type2_1r").checked=true;
+        document.getElementById("b_type2_2r").checked=true;
+        document.getElementById("b_type2_3r").checked=true;
+        document.getElementById("b_type2_4r").checked=true;
+        document.getElementById("b_type1_1r").checked=true;
+        document.getElementById("b_type1_2r").checked=true;
+        document.getElementById("b_type1_3r").checked=true;
+
+        document.getElementById("b_type3b").checked=false;
+        document.getElementById("b_type3b").indeterminate = true;
+        document.getElementById("b_type2_1b").checked=false;
+        document.getElementById("b_type2_1b").indeterminate = true;
+        document.getElementById("b_type2_2b").checked=false;
+        document.getElementById("b_type2_2b").indeterminate = true;
+        document.getElementById("b_type2_3b").checked=false;
+        document.getElementById("b_type2_3b").indeterminate = true;
+        document.getElementById("b_type2_4b").checked=false;
+        document.getElementById("b_type2_4b").indeterminate = true;
+        document.getElementById("b_type1_1b").checked=false;
+        document.getElementById("b_type1_1b").indeterminate = true;
+        document.getElementById("b_type1_2b").checked=false;
+        document.getElementById("b_type1_2b").indeterminate = true;
+        document.getElementById("b_type1_3b").checked=false;
+        document.getElementById("b_type1_3b").indeterminate = true;
+
+        if(type1_4r0 == false && type1_4b0 == false){
+            document.getElementById("b_type1_4r").checked=false;
+            document.getElementById("b_type1_4b").checked=false;
+        }
+        else if(type1_4r0 == true){
+            document.getElementById("b_type1_4r").checked=true;
+            document.getElementById("b_type1_4b").checked=false;
+            document.getElementById("b_type1_4b").indeterminate = true;
+        }
+        else if(type1_4b0 == true){
+            document.getElementById("b_type1_4r").checked=false;
+            document.getElementById("b_type1_4r").indeterminate = true;
+            document.getElementById("b_type1_4b").checked=true;
+        }
+
+        if(type1_5r0 == false && type1_5b0 == false){
+            document.getElementById("b_type1_5r").checked=false;
+            document.getElementById("b_type1_5b").checked=false;
+        }
+        else if(type1_5r0 == true){
+            document.getElementById("b_type1_5r").checked=true;
+            document.getElementById("b_type1_5b").checked=false;
+            document.getElementById("b_type1_5b").indeterminate = true;
+        }
+        else if(type1_5b0 == true){
+            document.getElementById("b_type1_5r").checked=false;
+            document.getElementById("b_type1_5r").indeterminate = true;
+            document.getElementById("b_type1_5b").checked=true;
+        }
+
+        if(type1_6r0 == false && type1_6b0 == false){
+            document.getElementById("b_type1_6r").checked=false;
+            document.getElementById("b_type1_6b").checked=false;
+        }
+        else if(type1_6r0 == true){
+            document.getElementById("b_type1_6r").checked=true;
+            document.getElementById("b_type1_6b").checked=false;
+            document.getElementById("b_type1_6b").indeterminate = true;
+        }
+        else if(type1_6b0 == true){
+            document.getElementById("b_type1_6r").checked=false;
+            document.getElementById("b_type1_6r").indeterminate = true;
+            document.getElementById("b_type1_6b").checked=true;
+        }
+    }
+    else if(Status_game == 2){
+        document.getElementById("b_type3r").checked=false;
+        document.getElementById("b_type3r").indeterminate = true;
+        document.getElementById("b_type2_1r").checked=false;
+        document.getElementById("b_type2_1r").indeterminate = true;
+        document.getElementById("b_type2_2r").checked=false;
+        document.getElementById("b_type2_2r").indeterminate = true;
+        document.getElementById("b_type2_3r").checked=false;
+        document.getElementById("b_type2_3r").indeterminate = true;
+        document.getElementById("b_type2_4r").checked=false;
+        document.getElementById("b_type2_4r").indeterminate = true;
+        document.getElementById("b_type1_4r").checked=false;
+        document.getElementById("b_type1_4r").indeterminate = true;
+        document.getElementById("b_type1_5r").checked=false;
+        document.getElementById("b_type1_5r").indeterminate = true;
+        document.getElementById("b_type1_6r").checked=false;
+        document.getElementById("b_type1_6r").indeterminate = true;
+
+        document.getElementById("b_type3b").checked=true;
+        document.getElementById("b_type2_1b").checked=true;
+        document.getElementById("b_type2_2b").checked=true;
+        document.getElementById("b_type2_3b").checked=true;
+        document.getElementById("b_type2_4b").checked=true;
+        document.getElementById("b_type1_4b").checked=true;
+        document.getElementById("b_type1_5b").checked=true;
+        document.getElementById("b_type1_6b").checked=true;
+
+        if(type1_1r0 == false && type1_1b0 == false){
+            document.getElementById("b_type1_1r").checked=false;
+            document.getElementById("b_type1_1b").checked=false;
+        }
+        else if(type1_1r0 == true){
+            document.getElementById("b_type1_1r").checked=true;
+            document.getElementById("b_type1_1b").checked=false;
+            document.getElementById("b_type1_1b").indeterminate = true;
+        }
+        else if(type1_1b0 == true){
+            document.getElementById("b_type1_1r").checked=false;
+            document.getElementById("b_type1_1r").indeterminate = true;
+            document.getElementById("b_type1_1b").checked=true;
+        }
+
+        if(type1_2r0 == false && type1_2b0 == false){
+            document.getElementById("b_type1_2r").checked=false;
+            document.getElementById("b_type1_2b").checked=false;
+        }
+        else if(type1_2r0 == true){
+            document.getElementById("b_type1_2r").checked=true;
+            document.getElementById("b_type1_2b").checked=false;
+            document.getElementById("b_type1_2b").indeterminate = true;
+        }
+        else if(type1_2b0 == true){
+            document.getElementById("b_type1_2r").checked=false;
+            document.getElementById("b_type1_2r").indeterminate = true;
+            document.getElementById("b_type1_2b").checked=true;
+        }
+
+        if(type1_3r0 == false && type1_3b0 == false){
+            document.getElementById("b_type1_3r").checked=false;
+            document.getElementById("b_type1_3b").checked=false;
+        }
+        else if(type1_3r0 == true){
+            document.getElementById("b_type1_3r").checked=true;
+            document.getElementById("b_type1_3b").checked=false;
+            document.getElementById("b_type1_3b").indeterminate = true;
+        }
+        else if(type1_3b0 == true){
+            document.getElementById("b_type1_3r").checked=false;
+            document.getElementById("b_type1_3r").indeterminate = true;
+            document.getElementById("b_type1_3b").checked=true;
+        }
+    }
+  }
+</script>
+
+<div id="red_tensuu" >     </div>
+<div id="blue_tensuu" >     </div>
+
+<input type="button" id="iPhone" size="10" value="iPhone" onclick="location.href='https://kosuke0512.github.io/Timer/RC23_timer_point_iPhone.html'">
+<input type="button" id="iPad" size="10" value="iPad" onclick="location.href='https://kosuke0512.github.io/Timer/RC23_timer_point_iPad.html'">
+</body></html>
