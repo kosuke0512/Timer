@@ -2,6 +2,10 @@
   position: relative;
 }
 
+/* .Pole img {
+  width: 40%;
+} */
+
 .Type3r {
     width: 53px;
     height: 53px;
@@ -15,8 +19,8 @@
     cursor: pointer;
     
     position: absolute;
-    top: 247.25px;
-    left: 249.41885px;
+    top: 49.4%;
+    left: 20%;
     -ms-transform: translate(-50%,-50%);
     -webkit-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
