@@ -594,7 +594,8 @@
     
     position: absolute;
     top: 49.4%;
-    left: 66.4%;
+    /* left: 66.4%; */
+    left: 63.4%;
     -ms-transform: translate(-50%,-50%);
     -webkit-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
@@ -646,7 +647,8 @@
     
     position: absolute;
     top: 31%;
-    left: 58.4%;
+    /* left: 58.4%; */
+    left: 55.4%;
     -ms-transform: translate(-50%,-50%);
     -webkit-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
@@ -698,7 +700,8 @@
     
     position: absolute;
     top: 67.8%;
-    left: 58.4%;
+    /* left: 58.4%; */
+    left: 55.4%;
     -ms-transform: translate(-50%,-50%);
     -webkit-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
@@ -750,7 +753,8 @@
     
     position: absolute;
     top: 31%;
-    left: 74.4%;
+    /* left: 74.4%; */
+    left: 71.4%;
     -ms-transform: translate(-50%,-50%);
     -webkit-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
@@ -802,7 +806,8 @@
     
     position: absolute;
     top: 67.8%;
-    left: 74.4%;
+    /* left: 74.4%; */
+    left: 71.4%;
     -ms-transform: translate(-50%,-50%);
     -webkit-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
@@ -856,7 +861,8 @@
     
     position: absolute;
     top: 49.4%;
-    left: 56.4%;
+    /* left: 56.4%; */
+    left: 53.4%;
     -ms-transform: translate(-50%,-50%);
     -webkit-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
@@ -905,7 +911,8 @@
     
     position: absolute;
     top: 49.4%;
-    left: 48.5%;
+    /* left: 48.5%; */
+    left: 45.5%;
     -ms-transform: translate(-50%,-50%);
     -webkit-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
@@ -941,7 +948,7 @@
 .timeput {
     position: absolute;
     top: 3.0%;
-    left: 80.0%;
+    left: 75.0%;
     /* -ms-transform: translate(-50%,-50%);
     -webkit-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
