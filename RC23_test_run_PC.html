@@ -83,26 +83,26 @@
     </div>
 
     <div class="timeput">
-        <div id="cheyyo_put" >   </div>
+        <div id="time_put1" >   </div>
+        <div id="time_put2" >   </div>
+        <div id="time_put3" >   </div>
+        <div id="time_put4" >   </div>
+        <div id="time_put5" >   </div>
+        <div id="time_put6" >   </div>
+        <div id="time_put7" >   </div>
+        <div id="time_put8" >   </div>
+        <div id="time_put9" >   </div>
+        <div id="time_put10" >   </div>
+        <div id="time_put11" >   </div>
+        <div id="time_put12" >   </div>
+        <div id="time_put13" >   </div>
+        <div id="time_put14" >   </div>
+        <div id="time_put15" >   </div>
+        <div id="time_put16" >   </div>
+        <div id="time_put17" >   </div>
+        <div id="time_put18" >   </div>
         <div id="tokuten_put" >   </div>
-        <div id="time_bridge_put" >   </div>
-        <div id="time_step_put" >   </div>
-        <div id="time_3_put" >   </div>
-        <div id="time_3_int_put" >   </div>
-        <div id="time_21_put" >   </div>
-        <div id="time_21_int_put" >   </div>
-        <div id="time_22_put" >   </div>
-        <div id="time_22_int_put" >   </div>
-        <div id="time_23_put" >   </div>
-        <div id="time_23_int_put" >   </div>
-        <div id="time_24_put" >   </div>
-        <div id="time_24_int_put" >   </div>
-        <div id="time_11_put" >   </div>
-        <div id="time_12_put" >   </div>
-        <div id="time_13_put" >   </div>
-        <div id="time_14_put" >   </div>
-        <div id="time_15_put" >   </div>
-        <div id="time_16_put" >   </div>
+        <div id="cheyyo_put" >   </div>
     </div>
 </div>
 
@@ -157,6 +157,9 @@ Status_step = 0;
 Status_step0 = 0;
 
 Status_game = 0;
+
+time_list = ["","","","","","","","","","","","","","","","","",""];
+number = 0;
 
 timer_reset();
 
@@ -217,24 +220,73 @@ function count_reset() {//カウントリセット
     document.getElementById("counter1").innerHTML = "0";   // 表示更新 
     document.getElementById("counter2").innerHTML = "00";   // 表示更新 
     document.getElementById("red_tensuu").innerHTML = "0点";   // 表示更新 
+
+    document.getElementById("time_put1").innerHTML= "";
+    document.getElementById("time_put2").innerHTML= "";
+    document.getElementById("time_put3").innerHTML= "";
+    document.getElementById("time_put4").innerHTML= "";
+    document.getElementById("time_put5").innerHTML= "";
+    document.getElementById("time_put6").innerHTML= "";
+    document.getElementById("time_put7").innerHTML= "";
+    document.getElementById("time_put8").innerHTML= "";
+    document.getElementById("time_put9").innerHTML= "";
+    document.getElementById("time_put10").innerHTML= "";
+    document.getElementById("time_put11").innerHTML= "";
+    document.getElementById("time_put12").innerHTML= "";
+    document.getElementById("time_put13").innerHTML= "";
+    document.getElementById("time_put14").innerHTML= "";
+    document.getElementById("time_put15").innerHTML= "";
+    document.getElementById("time_put16").innerHTML= "";
+    document.getElementById("time_put17").innerHTML= "";
+    document.getElementById("time_put18").innerHTML= "";
+
     document.getElementById("tokuten_put").innerHTML= "";
     document.getElementById("cheyyo_put").innerHTML= "";
-    document.getElementById("time_3_put").innerHTML= "";
-    document.getElementById("time_3_int_put").innerHTML= "";
-    document.getElementById("time_21_put").innerHTML= "";
-    document.getElementById("time_21_int_put").innerHTML= "";
-    document.getElementById("time_22_put").innerHTML= "";
-    document.getElementById("time_22_int_put").innerHTML= "";
-    document.getElementById("time_23_put").innerHTML= "";
-    document.getElementById("time_23_int_put").innerHTML= "";
-    document.getElementById("time_24_put").innerHTML= "";
-    document.getElementById("time_24_int_put").innerHTML= "";
-    document.getElementById("time_11_put").innerHTML= "";
-    document.getElementById("time_12_put").innerHTML= "";
-    document.getElementById("time_13_put").innerHTML= "";
-    document.getElementById("time_14_put").innerHTML= "";
-    document.getElementById("time_15_put").innerHTML= "";
 
+    Status_3r = 0;
+    Status_3r0 = 0;
+    Status_3b = 0;
+    Status_3b0 = 0;
+
+    Status_21r = 0;
+    Status_21r0 = 0;
+    Status_21b = 0;
+    Status_21b0 = 0;
+    Status_22r = 0;
+    Status_22r0 = 0;
+    Status_22b = 0;
+    Status_22b0 = 0;
+    Status_23r = 0;
+    Status_23r0 = 0;
+    Status_23b = 0;
+    Status_23b0 = 0;
+    Status_24r = 0;
+    Status_24r0 = 0;
+    Status_24b = 0;
+    Status_24b0 = 0;
+
+    Status_11r = 0;
+    Status_11r0 = 0;
+    Status_12r = 0;
+    Status_12r0 = 0;
+    Status_13r = 0;
+    Status_13r0 = 0;
+    Status_14r = 0;
+    Status_14r0 = 0;
+    Status_15r = 0;
+    Status_15r0 = 0;
+    Status_16r = 0;
+    Status_16r0 = 0;
+
+    Status_bridge = 0;
+    Status_bridge0 = 0;
+    Status_step = 0;
+    Status_step0 = 0;
+
+    Status_game = 0;
+
+    time_list = ["","","","","","","","","","","","","","","","","",""];
+    number = 0;
 
     def_count = 0;
     Status=-1;
@@ -256,7 +308,7 @@ function countdown() {//カウント表示
     document.getElementById("counter2").innerHTML = count_format_sec(count);   // 表示更新 
     if (count == 180) {
         count_stop();
-        document.getElementById("tokuten_put").innerHTML = "総得点は" + red_kingaku + "点" + "<br/>";
+        document.getElementById("tokuten_put").innerHTML = "3:00　総得点は" + red_kingaku + "点" + "<br/>";
     }
 }
 </script>
@@ -294,15 +346,14 @@ function onButtonClick() {//状態表示
             if (type3r == true) {//得点
                 red_kingaku += 70;
                 Status_3r = 1;
-                var time_3 = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML
-                time_3s = document.getElementById("counter1").innerHTML * 60 + document.getElementById("counter2").innerHTML;
-                document.getElementById("time_3_put").innerHTML= time_3 + "　Type3獲得" + "<br/>";
+                time_list[number] = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML + "　Type3獲得";
+                number += 1;
             }
             if (type3b == true) {//妨害
                 Status_3b = 1;
                 document.getElementById("b_type3r").indeterminate = true;
-                var time_3_int = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML
-                document.getElementById("time_3_int_put").innerHTML= time_3_int + "　Type3妨害完了" + "<br/>";
+                time_list[number] = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML + "　Type3妨害完了";
+                number += 1;
             }
         }
         else if (Status_3r0 == 1 && Status_3b0 == 0){
@@ -326,9 +377,8 @@ function onButtonClick() {//状態表示
                 Status_3r = 1;
                 document.getElementById("b_type3b").checked=false;
                 Status_3b = 0;
-                var time_3 = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML
-                time_3s = document.getElementById("counter1").innerHTML * 60 + document.getElementById("counter2").innerHTML;
-                document.getElementById("time_3_put").innerHTML= time_3 + "　Type3獲得" + "<br/>";
+                time_list[number] = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML + "　Type3獲得";
+                number += 1;
             }
         }
         Status_3r0 = Status_3r;
@@ -339,14 +389,14 @@ function onButtonClick() {//状態表示
             if (type2_1r == true) {
                 red_kingaku += 30;
                 Status_21r = 1;
-                var time_21 = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML
-                document.getElementById("time_21_put").innerHTML= time_21 + "　Type2(1)獲得" + "<br/>";
+                time_list[number] = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML + "　Type2(1)獲得";
+                number += 1;
             }
             if (type2_1b == true) {
                 Status_21b = 1;
                 document.getElementById("b_type2_1r").indeterminate = true;
-                var time_21_int = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML
-                document.getElementById("time_21_int_put").innerHTML= time_21_int + "　Type2(1)妨害完了" + "<br/>";
+                time_list[number] = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML + "　Type2(1)妨害完了";
+                number += 1;
             }
         }
         else if (Status_21r0 == 1 && Status_21b0 == 0){
@@ -370,8 +420,8 @@ function onButtonClick() {//状態表示
                 Status_21r = 1;
                 document.getElementById("b_type2_1b").checked=false;
                 Status_21b = 0;
-                var time_21 = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML
-                document.getElementById("time_21_put").innerHTML= time_21 + "　Type2(1)獲得" + "<br/>";
+                time_list[number] = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML + "　Type2(1)獲得";
+                number += 1;
             }
         }
         Status_21r0 = Status_21r;
@@ -382,14 +432,14 @@ function onButtonClick() {//状態表示
             if (type2_2r == true) {
                 red_kingaku += 30;
                 Status_22r = 1;
-                var time_22 = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML
-                document.getElementById("time_22_put").innerHTML= time_22 + "　Type2(2)獲得" + "<br/>";
+                time_list[number] = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML + "　Type2(2)獲得";
+                number += 1;
             }
             if (type2_2b == true) {
                 Status_22b = 1;
                 document.getElementById("b_type2_2r").indeterminate = true;
-                var time_22_int = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML
-                document.getElementById("time_22_int_put").innerHTML= time_22_int + "　Type2(2)妨害完了" + "<br/>";
+                time_list[number] = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML + "　Type2(2)妨害完了";
+                number += 1;
             }
         }
         else if (Status_22r0 == 1 && Status_22b0 == 0){
@@ -413,8 +463,8 @@ function onButtonClick() {//状態表示
                 Status_22r = 1;
                 document.getElementById("b_type2_2b").checked=false;
                 Status_22b = 0;
-                var time_22 = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML
-                document.getElementById("time_22_put").innerHTML= time_22 + "　Type2(2)獲得" + "<br/>";
+                time_list[number] = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML + "　Type2(2)獲得";
+                number += 1;
             }
         }
         Status_22r0 = Status_22r;
@@ -425,14 +475,14 @@ function onButtonClick() {//状態表示
             if (type2_3r == true) {
                 red_kingaku += 30;
                 Status_23r = 1;
-                var time_23 = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML
-                document.getElementById("time_23_put").innerHTML= time_23 + "　Type2(3)獲得" + "<br/>";
+                time_list[number] = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML + "　Type2(3)獲得";
+                number += 1;
             }
             if (type2_3b == true) {
                 Status_23b = 1;
                 document.getElementById("b_type2_3r").indeterminate = true;
-                var time_23_int = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML
-                document.getElementById("time_23_int_put").innerHTML= time_23_int + "　Type2(3)妨害完了" + "<br/>";
+                time_list[number] = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML + "　Type2(3)妨害完了";
+                number += 1;
             }
         }
         else if (Status_23r0 == 1 && Status_23b0 == 0){
@@ -456,8 +506,8 @@ function onButtonClick() {//状態表示
                 Status_23r = 1;
                 document.getElementById("b_type2_3b").checked=false;
                 Status_23b = 0;
-                var time_23 = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML
-                document.getElementById("time_23_put").innerHTML= time_23 + "　Type2(3)獲得" + "<br/>";
+                time_list[number] = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML + "　Type2(3)獲得";
+                number += 1;
             }
         }
         Status_23r0 = Status_23r;
@@ -468,14 +518,14 @@ function onButtonClick() {//状態表示
             if (type2_4r == true) {
                 red_kingaku += 30;
                 Status_24r = 1;
-                var time_24 = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML
-                document.getElementById("time_24_put").innerHTML= time_24 + "　Type2(4)獲得" + "<br/>";
+                time_list[number] = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML + "　Type2(4)獲得";
+                number += 1;
             }
             if (type2_4b == true) {
                 Status_24b = 1;
                 document.getElementById("b_type2_4r").indeterminate = true;
-                var time_24_int = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML
-                document.getElementById("time_24_int_put").innerHTML= time_24_int + "　Type2(4)妨害完了" + "<br/>";
+                time_list[number] = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML + "　Type2(4)妨害完了";
+                number += 1;
             }
         }
         else if (Status_24r0 == 1 && Status_24b0 == 0){
@@ -499,8 +549,8 @@ function onButtonClick() {//状態表示
                 Status_24r = 1;
                 document.getElementById("b_type2_4b").checked=false;
                 Status_24b = 0;
-                var time_24 = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML
-                document.getElementById("time_24_put").innerHTML= time_24 + "　Type2(4)獲得" + "<br/>";
+                time_list[number] = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML + "　Type2(4)獲得";
+                number += 1;
             }
         }
         Status_24r0 = Status_24r;
@@ -511,8 +561,8 @@ function onButtonClick() {//状態表示
             if (type1_1r == true) {
                 red_kingaku += 10;
                 Status_11r = 1;
-                var time_11 = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML
-                document.getElementById("time_11_put").innerHTML= time_11 + "　Type1(1)獲得" + "<br/>";
+                time_list[number] = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML + "　Type1(1)獲得";
+                number += 1;
             }
         }
         else {
@@ -528,8 +578,8 @@ function onButtonClick() {//状態表示
             if (type1_2r == true) {
                 red_kingaku += 10;
                 Status_12r = 1;
-                var time_12 = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML
-                document.getElementById("time_12_put").innerHTML= time_12 + "　Type1(2)獲得" + "<br/>";
+                time_list[number] = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML + "　Type1(2)獲得";
+                number += 1;
             }
         }
         else {
@@ -545,8 +595,8 @@ function onButtonClick() {//状態表示
             if (type1_3r == true) {
                 red_kingaku += 10;
                 Status_13r = 1;
-                var time_13 = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML
-                document.getElementById("time_13_put").innerHTML= time_13 + "　Type1(3)獲得" + "<br/>";
+                time_list[number] = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML + "　Type1(3)獲得";
+                number += 1;
             }
         }
         else {
@@ -562,8 +612,8 @@ function onButtonClick() {//状態表示
             if (type1_4r == true) {
                 red_kingaku += 25;
                 Status_14r = 1;
-                var time_14 = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML
-                document.getElementById("time_14_put").innerHTML= time_14 + "　Type1(4)獲得" + "<br/>";
+                time_list[number] = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML + "　Type1(4)獲得";
+                number += 1;
             }
         }
         else {
@@ -579,8 +629,8 @@ function onButtonClick() {//状態表示
             if (type1_5r == true) {
                 red_kingaku += 25;
                 Status_15r = 1;
-                var time_15 = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML
-                document.getElementById("time_15_put").innerHTML= time_15 + "　Type1(5)獲得" + "<br/>";
+                time_list[number] = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML + "　Type1(5)獲得";
+                number += 1;
             }
         }
         else {
@@ -596,8 +646,8 @@ function onButtonClick() {//状態表示
             if (type1_6r == true) {
                 red_kingaku += 25;
                 Status_16r = 1;
-                var time_16 = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML
-                document.getElementById("time_16_put").innerHTML= time_16 + "　Type1(6)獲得" + "<br/>";
+                time_list[number] = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML + "　Type1(6)獲得";
+                number += 1;
             }
         }
         else {
@@ -612,8 +662,8 @@ function onButtonClick() {//状態表示
         if (Status_bridge0 == 0){
             if (bridge == true) {
                 Status_bridge = 1;
-                var time_bridge = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML
-                document.getElementById("time_bridge_put").innerHTML= time_bridge + "　橋渡し完了" + "<br/>";
+                time_list[number] = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML + "　橋渡し完了";
+                number += 1;
             }
         }
         else {
@@ -627,8 +677,8 @@ function onButtonClick() {//状態表示
         if (Status_step0 == 0){
             if (step == true) {
                 Status_step = 1;
-                var time_step = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML
-                document.getElementById("time_step_put").innerHTML= time_step + "　段越え完了" + "<br/>";
+                time_list[number] = document.getElementById("counter1").innerHTML + ":" + document.getElementById("counter2").innerHTML + "　段越え完了";
+                number += 1;
             }
         }
         else {
@@ -651,6 +701,24 @@ function onButtonClick() {//状態表示
             type1_6r0 = document.getElementById("b_type1_6r").checked;
         }
         else{
+            document.getElementById("time_put1").innerHTML= time_list[0];
+            document.getElementById("time_put2").innerHTML= time_list[1];
+            document.getElementById("time_put3").innerHTML= time_list[2];
+            document.getElementById("time_put4").innerHTML= time_list[3];
+            document.getElementById("time_put5").innerHTML= time_list[4];
+            document.getElementById("time_put6").innerHTML= time_list[5];
+            document.getElementById("time_put7").innerHTML= time_list[6];
+            document.getElementById("time_put8").innerHTML= time_list[7];
+            document.getElementById("time_put9").innerHTML= time_list[8];
+            document.getElementById("time_put10").innerHTML= time_list[9];
+            document.getElementById("time_put11").innerHTML= time_list[10];
+            document.getElementById("time_put12").innerHTML= time_list[11];
+            document.getElementById("time_put13").innerHTML= time_list[12];
+            document.getElementById("time_put14").innerHTML= time_list[13];
+            document.getElementById("time_put15").innerHTML= time_list[14];
+            document.getElementById("time_put16").innerHTML= time_list[15];
+            document.getElementById("time_put17").innerHTML= time_list[16];
+            document.getElementById("time_put18").innerHTML= time_list[17];
             document.getElementById("red_tensuu").innerHTML = red_kingaku + "点";
         }
     }
